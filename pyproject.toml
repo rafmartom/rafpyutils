@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rafpyutils"
+version = "0.1.0"
+description = "My Personal Python utilities."
+authors = [
+    { name = "Rafael Martinez Tomas", email = "rafmartom@gmail.com" }
+]
+dependencies = []
+
+[tool.setuptools]
+packages = ["rafpyutils"]

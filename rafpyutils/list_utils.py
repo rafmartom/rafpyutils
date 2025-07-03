@@ -31,10 +31,15 @@ def insert_sublist_between_markers(input_list, input_sublist, start_pattern, end
     if start_index >= end_index:
         raise ValueError(f'{start_pattern} (index {start_index}) cannot be after {end_pattern} (index {end_index})')
 
-    output_list = (
-        input_list[:start_index + 1]
-        + input_sublist
-        + input_list[end_index:]
-    )
 
-    return output_list
+    # We need to push new lines or pull if the length of the input_sublist and index between markers.
+    lines_to_move = len(input_sublist) - (end_index - start_index + 1)
+    if lines_to_move > 0 :
+        for i in range(lines_to_move) :
+            input_list.insert(start_index,  "")
+    elif lines_to_move < 0 :
+        for i in range(lines_to_move) :
+            input_list.remove(start_index)
+
+    input_list[start_index:end_index+lines_to_move+1] = input_sublist
+    return input_list
