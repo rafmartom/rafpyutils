@@ -1,0 +1,25 @@
+name: Unit Testing
+run-name: "${{ github.workflow }} run by @${{ github.actor }}"
+on:
+  push:
+    branches:
+      - 'github-selfhosted-test'
+  pull_request:
+    branches:
+      - 'github-selfhosted-test'
+jobs:
+  python_unit_testing:
+    name: Python Unit Testing
+    runs-on: self-hosted
+    container:
+      image: python:3.11
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install package
+        run: |
+          pip install -e .
+          echo "Package Installed"
+          echo "Patxie"
+      - name: Run tests
+        run: python -m unittest discover tests
