@@ -1,0 +1,30 @@
+name: Unit Testing
+run-name: ${{ github.action }} by @${{ github.actor }}
+on:
+  push:
+    branches:
+      - 'github-test-workflow'
+  pull_request:
+    branches:
+      - 'github-test-workflow'
+jobs:
+  python_unit_testing:
+    name: Python Unit Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package
+        run: |
+          pip install -e .
+          echo "Package Installed"
+
+      - name: Run tests
+        run: python3 -m unittest discover tests
+
