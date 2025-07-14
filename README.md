@@ -2,4 +2,16 @@
 
 Python Package with Assorted Utilities created by Rafmartom
 
-I have just added a hook I want to test it this is dummy text
+## Usage
+
+In order to build the project do
+
+```
+make all
+```
+
+For more project related actions refer to
+
+```
+make help
+```
